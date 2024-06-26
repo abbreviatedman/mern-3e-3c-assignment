@@ -16,7 +16,7 @@ This file shows the results of API calls.
   POST :domain/:route/createGame
   Content-Type: application/json
 
-  {"title": "Aeon's End"}
+  {"title": "Betrayal At House On The Hill"}
 #+END_SRC
 
 #+RESULTS:
@@ -25,39 +25,43 @@ This file shows the results of API calls.
   "message": "success",
   "payload": [
     {
+      "usersLiked": [],
       "_id": "667c232cdca93251508399bd",
       "title": "Patchwork",
-      "usersLiked": [],
       "createdAt": "2024-06-26T14:18:20.812Z",
       "updatedAt": "2024-06-26T14:18:20.812Z",
       "__v": 0
     },
     {
+      "usersLiked": [],
       "_id": "667c2b5ccf03fe7072378cf5",
       "title": "Star Realms",
-      "usersLiked": [
-        "667c25dacbf3835fbf93da6c"
-      ],
       "createdAt": "2024-06-26T14:53:16.437Z",
       "updatedAt": "2024-06-26T14:53:16.437Z",
       "__v": 0
     },
     {
+      "usersLiked": [],
       "_id": "667c438ea3a15a8a425a017f",
       "title": "Spirit Island",
-      "usersLiked": [
-        "667c2b14cf03fe7072378cf0"
-      ],
       "createdAt": "2024-06-26T16:36:30.840Z",
       "updatedAt": "2024-06-26T16:36:30.840Z",
       "__v": 0
     },
     {
+      "usersLiked": [],
       "_id": "667c6882cb3a69ddffc7fa4c",
       "title": "Aeon's End",
-      "usersLiked": [],
       "createdAt": "2024-06-26T19:14:10.224Z",
       "updatedAt": "2024-06-26T19:14:10.224Z",
+      "__v": 0
+    },
+    {
+      "_id": "667c6967cb3a69ddffc7fa51",
+      "title": "Betrayal At House On The Hill",
+      "usersLiked": [],
+      "createdAt": "2024-06-26T19:17:59.917Z",
+      "updatedAt": "2024-06-26T19:17:59.917Z",
       "__v": 0
     }
   ]
@@ -66,12 +70,12 @@ This file shows the results of API calls.
 // HTTP/1.1 200 OK
 // X-Powered-By: Express
 // Content-Type: application/json; charset=utf-8
-// Content-Length: 720
-// ETag: W/"2d0-27xPkPQat3nSWaeihuPJmh4d8Ps"
-// Date: Wed, 26 Jun 2024 19:14:10 GMT
+// Content-Length: 845
+// ETag: W/"34d-qXO1u+oKw20c1WhfGEiAJc5bwBQ"
+// Date: Wed, 26 Jun 2024 19:18:00 GMT
 // Connection: keep-alive
 // Keep-Alive: timeout=5
-// Request duration: 0.503620s
+// Request duration: 0.117163s
 #+END_SRC
 
 ** Users
