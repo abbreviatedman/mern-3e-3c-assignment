@@ -1,0 +1,140 @@
+* API Route Testing
+:PROPERTIES:
+:header-args: :var domain="http://localhost:3000/api"
+:END:
+
+This file shows the results of API calls.
+
+** Games
+:PROPERTIES:
+:header-args+: :var route="games"
+:END:
+
+*** POST Games
+
+#+BEGIN_SRC restclient
+  POST :domain/:route/createGame
+  Content-Type: application/json
+
+  {"title": "Star Realms", "usersLiked": ["667c25dacbf3835fbf93da6c"]}
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC js
+{
+  "message": "success",
+  "payload": [
+    {
+      "_id": "667c232cdca93251508399bd",
+      "title": "Patchwork",
+      "usersLiked": [],
+      "createdAt": "2024-06-26T14:18:20.812Z",
+      "updatedAt": "2024-06-26T14:18:20.812Z",
+      "__v": 0
+    },
+    {
+      "_id": "667c2b5ccf03fe7072378cf5",
+      "title": "Star Realms",
+      "usersLiked": [
+        "667c25dacbf3835fbf93da6c"
+      ],
+      "createdAt": "2024-06-26T14:53:16.437Z",
+      "updatedAt": "2024-06-26T14:53:16.437Z",
+      "__v": 0
+    }
+  ]
+}
+// POST http://localhost:3000/api/games/createGame
+// HTTP/1.1 200 OK
+// X-Powered-By: Express
+// Content-Type: application/json; charset=utf-8
+// Content-Length: 375
+// ETag: W/"177-OF7/fQkr8/77qUxwc6guzsdI2vQ"
+// Date: Wed, 26 Jun 2024 14:53:16 GMT
+// Connection: keep-alive
+// Keep-Alive: timeout=5
+// Request duration: 0.137790s
+#+END_SRC
+
+** Users
+:PROPERTIES:
+:header-args+: :var route="users"
+:END:
+
+*** POST Users
+
+#+BEGIN_SRC restclient
+  POST :domain/:route/createUser
+  Content-Type: application/json
+
+  {"username": "Brian", "likedGames": []}
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC js
+{
+  "message": "success",
+  "payload": [
+    {
+      "_id": "667c25dacbf3835fbf93da6c",
+      "username": "Colin",
+      "likedGames": [
+        "667c232cdca93251508399bd"
+      ],
+      "createdAt": "2024-06-26T14:29:46.381Z",
+      "updatedAt": "2024-06-26T14:29:46.381Z",
+      "__v": 0
+    },
+    {
+      "_id": "667c2b14cf03fe7072378cf0",
+      "username": "Brian",
+      "likedGames": [],
+      "createdAt": "2024-06-26T14:52:04.145Z",
+      "updatedAt": "2024-06-26T14:52:04.145Z",
+      "__v": 0
+    }
+  ]
+}
+// POST http://localhost:3000/api/users/createUser
+// HTTP/1.1 200 OK
+// X-Powered-By: Express
+// Content-Type: application/json; charset=utf-8
+// Content-Length: 371
+// ETag: W/"173-bDJp2N+I2Jtt82/gEqLgbMpkuAs"
+// Date: Wed, 26 Jun 2024 14:52:04 GMT
+// Connection: keep-alive
+// Keep-Alive: timeout=5
+// Request duration: 0.197197s
+#+END_SRC
+
+*** PUT User To Like A Game
+#+BEGIN_SRC restclient
+PUT :domain/:route/userLikesGame/667c25dacbf3835fbf93da6c
+Content-Type: application/json
+
+{"gameId": "667c2b5ccf03fe7072378cf5"}
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC js
+{
+  "message": "success",
+  "payload": {
+    "likedGames": [
+      "667c232cdca93251508399bd",
+      "667c2b5ccf03fe7072378cf5",
+      "667c2b5ccf03fe7072378cf5"
+    ]
+  }
+}
+// PUT http://localhost:3000/api/users/userLikesGame/667c25dacbf3835fbf93da6c
+// HTTP/1.1 200 OK
+// X-Powered-By: Express
+// Content-Type: application/json; charset=utf-8
+// Content-Length: 129
+// ETag: W/"81-57ktUnReExuc2VQNRCm2Ppqlk0o"
+// Date: Wed, 26 Jun 2024 16:35:02 GMT
+// Connection: keep-alive
+// Keep-Alive: timeout=5
+// Request duration: 0.121129s
+#+END_SRC
