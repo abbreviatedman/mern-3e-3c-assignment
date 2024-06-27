@@ -2,7 +2,14 @@
 
 Your goal is to take this app, which already has a functioning API, and give it some logic and UI code so it has a functioning _interface_ as well.
 
-### Part 0: Lay Of The Land
+### Part 0 - How To Get Unstuck
+
+Here are some things to reference to help you if you get stuck.
+
+- [The deployed version of this app](https://mern-3e-3c-solution-33aea09312df.herokuapp.com/). This will give you a good sense of where we're headed and whether _your_ version acts as intended.
+- [The final code for 3C](https://github.com/abbreviatedman/mern-3c-assignment-solution). It is reasonably close to what we're doing here. **Note that this repo may be private if you wish to read the code at a later date**. Download the code now, or ask your instructor for temporary access later.
+
+### Part 1: Lay Of The Land
 
 Note what this project already has:
 
@@ -13,7 +20,7 @@ Note what this project already has:
 
 Now to what _you_ need to add.
 
-### Part 1: Routes
+### Part 2: Routes
 
 - Add a route for `/` to the `viewRouter` in `index.js`
 - add routes in the `viewRouter` for the following routes. The functions themselves should be in the controllers file.
@@ -23,16 +30,16 @@ Now to what _you_ need to add.
   - `/games`, which should be handled by a function called `getGamesPage`
   - `/games/:id`, which should be handled by a function called `getOneGamePage`
 
-### Part 2: Controller Functions
+### Part 3: Controller Functions
 
 - add the functions to the `viewsController` file.
   - `getHomePage` just needs to render the EJS file "home" using `res.render`.
   - `getGamesPage` needs to render the EJS file "games", and also needs to include all the games in the database. You can use mongoose find operations to get them, and then use the second argument to `res.render` to send the games in an object.
   - `getUsersPage` is the same, but for users instead games.
-  - `getOneGamePage` will need to access one particular game, whose ID should be passed to you on the request's dynamic parameter (`req.params`). It will also need to find the users who like the game—you can find which users have the game on their `likedGames` property. This is a little tricky, and you may need to do some internet sleuthing to find the right way to query that with Mongoose. In the end, you will have to `res.render` to the "oneGame" EJS file, and send `game` and `users` properties.
-  - `getOneUserPage` is very similar, but the query is a bit tougher, since you're finding all the games that are in the user's `likedGames` property. Research the `$in` keyword in MongoDB. In the end, you will have to `res.render` to the "oneUser" EJS file, and send `user` and `games` properties.
+  - `getOneGamePage` will need to access one particular game, whose ID should be passed to you on the request's dynamic parameter (`req.params`). It will also need to find the users who like the game—you can find which users have the game on their `likedGames` property. This is a little tricky, and you may need to do some internet sleuthing to find the right way to query that with Mongoose. In the end, you will have to `res.render` to the `oneGame` EJS file, and send `game` and `users` properties.
+  - `getOneUserPage` is very similar, but the query is a bit tougher, since you're finding all the games that are in the user's `likedGames` property. Research the `$in` keyword in MongoDB. In the end, you will have to `res.render` to the `oneUser` EJS file, and send `user` and `games` properties.
 
-### Part 3: Views
+### Part 4: Views
 
 - In `home.ejs`, make the "here is a" text lines into anchor tag links to `/users` and `/games`.
 - In `users.ejs`, add some EJS code to display all the users. Use either a `for` loop or a `forEach` to loop through the `users` (who will be sent to you when the `getUsersPage` renders the page with the `users` property in its `res.render` object). For each `user`, print out their username and make that username an anchor tag link to `/users/:id`, where `:id` is the actual ID for that user object.
@@ -40,6 +47,6 @@ Now to what _you_ need to add.
 - Create a view for one user in `oneUser.ejs`. Use EJS and the `res.render`-ed `user` object to put the user's username in the `h1` heading. Loop through the games provided to you in the `games` property (when you `res.render`-ed it to this file) and put each's `title` in the list. Each title should also be an anchor tag link to `/games/:id`.
 - Do the same thing for `oneGame.ejs`.
 
-### Part 4: Testing
+### Part 5: Testing
 
 Test the user interface out thoroughly, making sure that each user shows the games they like and each game shows who likes it. Check this information against what you can see in Compass.
